@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="en" class="scroll-smooth">
     <head>
         <meta charset="UTF-8">
         <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
@@ -10,18 +10,34 @@
     </head>
     <body>
         <!-- Navigation banner -->
-        <Section class="bg-cyan-400 w-full p-6 text-base md:text-lg lg:text-xl flex justify-evenly sticky top-0">
+        <Section class="lg:hidden bg-cyan-400 w-full p-4 text-base md:text-lg lg:text-xl flex justify-evenly sticky top-0 z-50 shadow-md">
+            <Nav>
+                <button class="block">☰</button>
+            </Nav>
             <p class="text-blue-800 font-bold">
                 Tj Fraser
             </p>
-            <nav class="space-x-4">
+            <button class="w-auto h-auto rounded-lg bg-sky-300 hover:bg-white hover:scale-110">
+                <a href="#Contact">
+                    Contact
+                </a> 
+            </button>
+        </Section>    
+        <Section class="hidden lg:flex justify-evenly bg-cyan-400 w-full p-4 text-base md:text-lg lg:text-xl sticky top-0 z-50 shadow-md">
+            <p class="text-blue-800 font-bold">
+                Tj Fraser
+            </p>
+            
+            <nav class="hidden md:flex space-x-4">
                 <a href="#About">About</a>
                 <a href="#Skills">Skills</a>
                 <a href="#Projects">Projects</a>
                 <a href="#Education">Education</a>
             </nav>
             <button class="w-auto h-auto rounded-lg bg-sky-300 hover:bg-white hover:scale-110">
-                Contect
+                <a href="#Contact">
+                    Contact
+                </a> 
             </button>
         </Section>
         <!-- Hero section -->
@@ -76,14 +92,32 @@
                     <h3 class="underline font-bold">CS50 Scratch Project</h3>
                     <p>
                         A understanding of how scratch works and all funcations on the program and how to use them to turn it into a funcational program.
-                        For in this case a very simple runner game that can track times and has 3 simple stages.
+                        For in this case a platformer game that can track times and has 3 simple stages.
                     </p>
                     <a href="" class="hover:underline hover:text-blue-400">View Project</a>
                 </div>
             </article>
         </section>
         <!-- Education section -->
-
+        
         <!-- Contact section -->
+        <section id="Contact" class="py-6 bg-gray-200 text-base md:text-lg lg:text-xl">
+            <h2 class="text-center underline font-bold">Contact</h2>
+            <form class="text-center">
+                <div class="m-5">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="m-5">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="m-5">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="hover:bg-sky-400 hover:scale-110">Send Message</button>
+            </form>
+        </section>
     </body>
 </html>

@@ -10,7 +10,7 @@
     </head>
     <body>
         <!-- Navigation banner -->
-        <Section class="bg-cyan-400 w-full p-6 text-base md:text-lg lg:text-xl flex justify-evenly fixed top-0 left-0 w-full">
+        <Section class="bg-cyan-400 w-full p-6 text-base md:text-lg lg:text-xl flex justify-evenly sticky top-0">
             <p class="text-blue-800 font-bold">
                 Tj Fraser
             </p>
@@ -45,7 +45,7 @@
             </section>
         </section>
         <!-- About section -->
-        <section class="py-6 bg-white bgtext-base md:text-lg lg:text-xl">
+        <section id="About" class="py-6 bg-white text-base md:text-lg lg:text-xl">
             <h1 class="text-center underline">
                 About me
             </h1>
@@ -57,9 +57,31 @@
             </p>
         </section>
         <!-- Skill section -->
-
+        <section id="Skills" class="bg-gray-200 text-center text-base md:text-lg lg:text-xl py-6">
+            <h2 class="underline mb-5">Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="shadow-lg p-6 border-4 border-blue-400">HTML5</div>
+                <div class="shadow-lg p-6 border-4 border-blue-400">CSS3</div>
+                <div class="shadow-lg p-6 border-4 border-blue-400">Tailwind CSS</div>
+                <div class="shadow-lg p-6 border-4 border-blue-400">Scratch</div>
+                <div class="shadow-lg p-6 border-4 border-blue-400">Git & GitHub</div>
+                <div class="shadow-lg p-6 border-4 border-blue-400">Problem Solving</div>
+            </div>
+        </section>
         <!-- Project section -->
-
+        <section id="Projects" class="text-base md:text-lg lg:text-xl py-6">
+            <h2 class="text-center">My Projects</h2>
+            <article class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center m-5">
+                <div class="border-8 border-black bg-blue-300">
+                    <h3 class="underline font-bold">CS50 Scratch Project</h3>
+                    <p>
+                        A understanding of how scratch works and all funcations on the program and how to use them to turn it into a funcational program.
+                        For in this case a very simple runner game that can track times and has 3 simple stages.
+                    </p>
+                    <a href="" class="hover:underline hover:text-blue-400">View Project</a>
+                </div>
+            </article>
+        </section>
         <!-- Education section -->
 
         <!-- Contact section -->

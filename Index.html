@@ -42,27 +42,31 @@
         </Section>
         <!-- Hero section -->
         <section id="Hero" class="p-20 bg-gradient-to-r from-cyan-600 via-sky-600 to-blue-600 text-base md:text-lg lg:text-xl flex items-center justify-center flex-col">
-            <h1 class="text-3xl text-white text-center m-2 underline">
+            <h1 class="text-3xl text-white text-center m-2 underline font-bold">
                 Tj Fraser
             </h1>
             <p class="text-gray-300 text-center">
                 Student Developer
             </p>
             <p class="text-gray-300 text-center m-1">
-                Studing at Unicollege to build my skills to go into the world of software develpoment and maybe more into the future.
+                Studing at Unicollege to build my skills to go into the world of software develpoment and more into the future.
             </p>
             <section class="flex flex-row">
                 <button class="bg-white hover:bg-sky-300 rounded-full text-center w-auto h-9 m-3 hover:scale-110">
-                    View current project
+                    <a href="#Projects">
+                        View current project
+                    </a>
                 </button>
                 <button class="bg-white hover:bg-sky-300 rounded-full text-center w-auto h-9 m-3 hover:scale-110">
-                    My skills
+                    <a href="#Skills">
+                        My skills
+                    </a>
                 </button>
             </section>
         </section>
         <!-- About section -->
         <section id="About" class="py-6 bg-blue-200 text-base md:text-lg lg:text-xl">
-            <h1 class="text-center underline">
+            <h1 class="text-center underline font-bold">
                 About me
             </h1>
             <p class="text-center">
@@ -74,7 +78,7 @@
         </section>
         <!-- Skill section -->
         <section id="Skills" class="bg-gray-200 text-center text-base md:text-lg lg:text-xl py-6">
-            <h2 class="underline mb-5">Skills</h2>
+            <h2 class="underline mb-5 font-bold">Skills</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="shadow-lg p-6 border-4 border-blue-400">HTML5</div>
                 <div class="shadow-lg p-6 border-4 border-blue-400">CSS3</div>
@@ -86,7 +90,7 @@
         </section>
         <!-- Project section -->
         <section id="Projects" class="text-base md:text-lg lg:text-xl py-6">
-            <h2 class="text-center">My Projects</h2>
+            <h2 class="text-center font-bold">My Projects</h2>
             <article class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center m-5">
                 <div class="border-8 border-black bg-blue-300">
                     <h3 class="underline font-bold">CS50 Scratch Project</h3>
@@ -102,7 +106,7 @@
         
         <!-- Contact section -->
         <section id="Contact" class="py-6 bg-gray-400 text-base md:text-lg lg:text-xl">
-            <h2 class="bg-auto bg-gray-400 text-center underline font-bold m-3 ">Contact</h2>
+            <h2 class="bg-auto bg-gray-400 text-center underline font-bold m-3 font-bold">Contact</h2>
             <form class="bg-gray-400 text-center">
                     <div class="m-5">
                         <label for="name">Name</label>
@@ -116,7 +120,7 @@
                         <label for="message">Message</label>
                         <textarea id="message" name="message" required></textarea>
                     </div>
-                <button type="submit" class="bg-gray-400 hover:bg-sky-400 hover:scale-110">Send Message</button>
+                <button type="submit" class="bg-gray-600 hover:bg-white hover:scale-110">Send Message</button>
             </form>
         </section>
         <footer>

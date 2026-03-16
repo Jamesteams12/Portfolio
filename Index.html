@@ -10,13 +10,10 @@
     </head>
     <body>
         <!-- Navigation banner -->
-        <Section class="lg:hidden bg-cyan-400 w-full p-4 text-base md:text-lg lg:text-xl flex justify-evenly sticky top-0 z-50 shadow-md">
+        <Section class="lg:hidden bg-cyan-400 w-full p-4 text-base md:text-lg lg:text-xl flex justify-between sticky top-0 z-50 shadow-md">
             <Nav>
                 <button class="block">☰</button>
             </Nav>
-            <p class="text-blue-800 font-bold">
-                Tj Fraser
-            </p>
             <button class="w-auto h-auto rounded-lg bg-sky-300 hover:bg-white hover:scale-110">
                 <a href="#Contact">
                     Contact
@@ -27,7 +24,6 @@
             <p class="text-blue-800 font-bold">
                 Tj Fraser
             </p>
-            
             <nav class="hidden md:flex space-x-4">
                 <a href="#About">About</a>
                 <a href="#Skills">Skills</a>
@@ -52,12 +48,12 @@
                 Studing at Unicollege to build my skills to go into the world of software develpoment and more into the future.
             </p>
             <section class="flex flex-row">
-                <button class="bg-white hover:bg-sky-300 rounded-full text-center w-auto h-9 m-3 hover:scale-110">
+                <button class="bg-white hover:bg-sky-300 rounded-full text-center w-auto h-auto lg:h-12 m-3 hover:scale-110">
                     <a href="#Projects">
                         View current project
                     </a>
                 </button>
-                <button class="bg-white hover:bg-sky-300 rounded-full text-center w-auto h-9 m-3 hover:scale-110">
+                <button class="bg-white hover:bg-sky-300 rounded-full text-center w-auto h-auto lg:h-12 m-3 hover:scale-110">
                     <a href="#Skills">
                         My skills
                     </a>
@@ -69,9 +65,9 @@
             <h1 class="text-center underline font-bold">
                 About me
             </h1>
-            <p class="text-center">
+            <p class="text-center p-6">
                 I am a student at Unicollege studying programming full time.
-                I always found technology interesting to me regardless if it was games or coding.<br>
+                I always found technology interesting to me regardless if it was games or coding.
                 I want to follow my passion for all that is related to technology.
                 I also wanted to do Game programming as hobbie later down the line.
             </p>
@@ -120,7 +116,9 @@
                         <label for="message">Message</label>
                         <textarea id="message" name="message" required></textarea>
                     </div>
-                <button type="submit" class="bg-gray-600 hover:bg-white hover:scale-110">Send Message</button>
+                <button type="submit" class="rounded-full bg-gray-600 hover:bg-white hover:scale-110">
+                    Send Message
+                </button>
             </form>
         </section>
         <footer>

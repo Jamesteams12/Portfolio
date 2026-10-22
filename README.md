@@ -26,8 +26,14 @@ This site is my portfolio and also my capstone: a working full-stack app. It wil
 
 ## Skills and credentials
  
-My verified badges are on [Credly](https://www.credly.com/users/tj-fraser.fa11c5cf/badges/credly).
+My verified badges are on [Credly](https://www.credly.com/users/tj-fraser.fa11c5cf/badges/credly). So I will link each skill to this to show evidence.
 
 ## AI Usaged
  
 I used AI tools (Claude mainly) to: Plan how the website might or could look like, Brainstorm ideas when I don't have any idea how to effectively present a page or website and Explain error problems and how to fit it. I wrote and understand the code in this repo and can explain any part of it. Where AI helped, I reviewed and changed the result myself.
+
+## Peer review
+
+What the reviewer said: "The wireframes show a good structure, but the Projects page could benefit from project cards that display screenshots, technologies used, and links to GitHub repositories."
+
+Reflection from the review: The feedback highlighted the importance of showcasing projects in a more visual way. I will plan to change the method for Project page to a project cards method containing screenshots, technology stacks, and repository links to make my work easier to evaluate.

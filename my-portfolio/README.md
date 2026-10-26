@@ -18,10 +18,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Admin login
 
-Set `ADMIN_PASSWORD` to the password for the admin account and `AUTH_SECRET` to a
-random secret in `my-portfolio/.env.local` before running the app. Generate an
-`AUTH_SECRET` with `npx auth secret`. Keep `.env.local` private and do not commit
-these values. Visiting `/admin` without a valid login redirects to `/login`.
+Set `ADMIN_PASSWORD` to a strong password for the admin account and `AUTH_SECRET`
+to a random secret in `my-portfolio/.env.local` before running the app. Both
+variables are listed in `.env.example`; `.env.local` is ignored by Git and must
+not be committed. Generate an `AUTH_SECRET` with `npx auth secret`. Visiting
+`/admin` without a valid login redirects to `/login`.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 

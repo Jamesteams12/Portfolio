@@ -25,7 +25,7 @@ export default async function Page({ searchParams }: LoginPageProps) {
           Password
           <input
             autoComplete="current-password"
-            className="rounded border border-gray-400 px-3 py-2 text-black"
+            className="rounded border border-gray-400 px-3 py-2 text-black bg-neutral-100"
             name="password"
             required
             type="password"

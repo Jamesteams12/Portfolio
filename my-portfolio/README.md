@@ -16,6 +16,13 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Admin login
+
+Set `ADMIN_PASSWORD` to the password for the admin account and `AUTH_SECRET` to a
+random secret in `my-portfolio/.env.local` before running the app. Generate an
+`AUTH_SECRET` with `npx auth secret`. Keep `.env.local` private and do not commit
+these values. Visiting `/admin` without a valid login redirects to `/login`.
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.

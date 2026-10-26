@@ -24,6 +24,24 @@ variables are listed in `.env.example`; `.env.local` is ignored by Git and must
 not be committed. Generate an `AUTH_SECRET` with `npx auth secret`. Visiting
 `/admin` without a valid login redirects to `/login`.
 
+## Supabase projects
+
+The Projects page reads published entries from the Supabase `public.projects`
+table. In the Supabase dashboard, open **SQL Editor** and run
+[`supabase/migrations/20261026120000_create_projects.sql`](./supabase/migrations/20261026120000_create_projects.sql)
+to create the table and enable read-only access to published projects.
+
+Copy the project URL and publishable key from **Project Settings → API** into
+`my-portfolio/.env.local` as `NEXT_PUBLIC_SUPABASE_URL` and
+`NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`. These are public client credentials;
+the table's row-level security policy limits reads to published rows. Never
+put a service-role/secret key in a `NEXT_PUBLIC_` variable.
+
+Add project entries in the table with `title`, `slug`, `description`, and
+optional `url` and `image_url`; set `published` to `true` to display them.
+`sort_order` controls their order (lower values appear first). Restart the dev
+server after changing environment variables.
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.

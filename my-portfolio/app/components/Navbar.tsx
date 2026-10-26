@@ -10,15 +10,15 @@ export default function Navbar() {
   const navItems = [
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
-    { name: "CV", href: "/CV" },
     { name: "Projects", href: "/projects" },
     { name: "Skills", href: "/skills" },
+    { name: "Login", href: "/login" },
   ];
 
   return (
     <nav className="bg-gray-900 text-white p-4">
       <div className="max-w-6xl mx-auto flex justify-between items-center">
-        <div className="font-bold text-xl">MyLogo</div>
+        <div className="font-bold text-xl">Tj Fraser</div>
         <div className="flex gap-6">
           {navItems.map((item) => {
             const isActive = pathname === item.href;

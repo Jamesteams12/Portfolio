@@ -22,7 +22,7 @@ This site is my portfolio and also my capstone: a working full-stack app. It wil
 
 - **CV:** downloadable PDF
 
-- **Admin** (private): manage project entries behind Supabase Auth
+- **Admin** (private): manage project entries through the authenticated admin page and Supabase
 
 ## Skills and credentials
  

@@ -43,7 +43,7 @@ export default async function Page() {
           {projects.map((project) => (
             <li
               key={project.id}
-              className="grid min-h-44 grid-cols-[minmax(0,1fr)_minmax(4rem,0.7fr)_auto] items-center gap-3 rounded-lg border-2 border-blue-900 bg-slate-950/90 p-4 text-white shadow-sm sm:gap-6 sm:p-6"
+              className="grid min-h-44 grid-cols-[minmax(0,1fr)_minmax(4rem,0.7fr)_auto] items-center gap-3 rounded-lg border-2 border-blue-900 bg-blue-950/90 p-4 text-white shadow-sm sm:gap-6 sm:p-6"
             >
               <div className="min-w-0">
                 <h2 className="break-words text-lg font-semibold sm:text-xl">

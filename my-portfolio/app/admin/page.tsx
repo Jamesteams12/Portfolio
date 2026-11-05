@@ -9,7 +9,8 @@ type Project = {
   title: string;
   description: string;
   slug: string;
-  url: string | null;
+  live_url: string | null;
+  github_url: string | null;
   image_url: string | null;
   published: boolean;
   sort_order: number;
@@ -36,7 +37,7 @@ export default async function Page({ searchParams }: AdminPageProps) {
     getSupabaseAdminClient()
       .from("projects")
       .select(
-        "id, title, description, slug, url, image_url, published, sort_order",
+        "id, title, description, slug, live_url, github_url, image_url, published, sort_order",
       )
       .order("sort_order", { ascending: true })
       .returns<Project[]>(),
@@ -152,31 +153,59 @@ function ProjectFields({ project }: { project?: Project }) {
       </label>
       <label className="grid gap-1">
         Description
+        <span className="text-sm text-gray-600">
+          Use Enter for a new line and add • at the start of a line for a
+          bullet.
+        </span>
         <textarea
           className="rounded border border-gray-400 px-3 py-2"
           name="description"
-          rows={3}
+          rows={6}
           defaultValue={project?.description}
         />
       </label>
       <label className="grid gap-1">
-        Project URL
+        Live Site
         <input
           className="rounded border border-gray-400 px-3 py-2"
-          name="url"
+          name="live_url"
           type="url"
-          defaultValue={project?.url ?? ""}
+          defaultValue={project?.live_url ?? ""}
         />
       </label>
       <label className="grid gap-1">
-        Image URL
+        GitHub Repository
         <input
           className="rounded border border-gray-400 px-3 py-2"
-          name="image_url"
+          name="github_url"
           type="url"
-          defaultValue={project?.image_url ?? ""}
+          defaultValue={project?.github_url ?? ""}
         />
       </label>
+      <div className="grid gap-4 sm:grid-cols-2">
+        <label className="grid content-start gap-1">
+          Image URL
+          <input
+            className="rounded border border-gray-400 px-3 py-2"
+            name="image_url"
+            type="url"
+            defaultValue={project?.image_url ?? ""}
+          />
+        </label>
+        <label className="grid content-start gap-1">
+          Or upload an image
+          <input
+            className="rounded border border-gray-400 px-3 py-2"
+            name="image_file"
+            type="file"
+            accept="image/png,image/jpeg,image/webp"
+          />
+          <span className="text-sm text-gray-600">
+            PNG, JPG, or WebP; maximum 5 MB. Uploading a file replaces the URL
+            above.
+          </span>
+        </label>
+      </div>
       <label className="grid gap-1">
         Sort order
         <input

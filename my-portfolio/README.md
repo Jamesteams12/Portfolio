@@ -30,6 +30,15 @@ The Projects page reads published entries from the Supabase `public.projects`
 table. In the Supabase dashboard, open **SQL Editor** and run
 [`supabase/migrations/20261026120000_create_projects.sql`](./supabase/migrations/20261026120000_create_projects.sql)
 to create the table and enable read-only access to published projects.
+Then run
+[`supabase/migrations/20261105120000_split_project_links.sql`](./supabase/migrations/20261105120000_split_project_links.sql)
+to rename the existing `url` column to `live_url` (preserving saved links) and
+add the optional `github_url` column.
+Run
+[`supabase/migrations/20261105130000_create_project_images_bucket.sql`](./supabase/migrations/20261105130000_create_project_images_bucket.sql)
+to create the public `project-images` Storage bucket used for images uploaded
+from the admin page. The admin upload accepts PNG, JPG, and WebP files up to
+5 MB; public access is read-only, and uploads use the server-only service role.
 
 Copy the project URL and publishable key from **Project Settings → API** into
 `my-portfolio/.env.local` as `NEXT_PUBLIC_SUPABASE_URL` and
@@ -38,9 +47,11 @@ the table's row-level security policy limits reads to published rows. Never
 put a service-role/secret key in a `NEXT_PUBLIC_` variable.
 
 Add project entries in the table with `title`, `slug`, `description`, and
-optional `url` and `image_url`; set `published` to `true` to display them.
-`sort_order` controls their order (lower values appear first). Restart the dev
-server after changing environment variables.
+optional `live_url`, `github_url`, and `image_url`; the admin page also lets you
+upload a PNG, JPG, or WebP image instead of entering an image URL. Set
+`published` to `true` to display projects. `sort_order` controls their order
+(lower values appear first). Restart the dev server after changing environment
+variables.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 

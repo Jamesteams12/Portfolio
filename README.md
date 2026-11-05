@@ -46,6 +46,6 @@ What the reviewer said: "The wireframes show a good structure, but the Projects 
 
 Reflection from the review: The feedback highlighted the importance of showcasing projects in a more visual way. I will plan to change the method for Project page to a project cards method containing screenshots, technology stacks, and repository links to make my work easier to evaluate.
 
-## 9. Reflection for Submission (Week 33)
+Reflection for Week 34
 
-The `projects` table uses a UUID primary key and stores each project's title, description, unique slug, optional links and image, publication status, sort order, and creation time. Admin authentication uses a password stored in `ADMIN_PASSWORD`, with NextAuth maintaining a JWT session signed using `AUTH_SECRET`. Row-level security is enabled, and its select policy lets visitors read only rows where `published` is true; admin reads and changes are handled server-side after authentication. I tested visitor restrictions by checking that a logged-out visitor is redirected from `/admin` to `/login` and that the public Projects page queries only published rows.
+This week I developed the Projects section of my portfolio and created a detailed case study for my capstone project. I documented the problem being solved, my role, the technologies used, screenshots of the application and links to the repository and live deployment. This helped improve how I present my work to potential employers.

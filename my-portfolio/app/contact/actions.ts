@@ -25,12 +25,18 @@ export async function submitContact(formData: FormData) {
     redirect("/contact?error=invalid");
   }
 
-  const { error } = await getSupabaseClient()
-    .from("contacts")
-    .insert({ name, email, message });
+  let submissionError: unknown;
+  try {
+    const { error } = await getSupabaseClient()
+      .from("contacts")
+      .insert({ name, email, message });
+    submissionError = error;
+  } catch (error) {
+    submissionError = error;
+  }
 
-  if (error) {
-    console.error("Unable to save contact submission:", error);
+  if (submissionError) {
+    console.error("Unable to save contact submission:", submissionError);
     redirect("/contact?error=submit-failed");
   }
 

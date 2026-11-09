@@ -46,6 +46,13 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+Contact form submissions can be stored in the Supabase `public.contacts` table.
+Run
+[`supabase/migrations/20261109100000_create_contacts.sql`](./supabase/migrations/20261109100000_create_contacts.sql)
+in the Supabase SQL Editor to create it. Anonymous and authenticated users can
+insert submissions, but row-level security does not allow them to read contact
+records.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

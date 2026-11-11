@@ -11,7 +11,7 @@ export default async function Page({ searchParams }: LoginPageProps) {
   const error = Array.isArray(params.error) ? params.error[0] : params.error;
 
   return (
-    <section className="mx-auto w-full max-w-md px-6 py-16">
+    <section className="mx-auto w-full max-w-md px-4 py-12 sm:px-6 sm:py-16">
       <h1 className="mb-6 text-3xl font-bold">Admin login</h1>
       {error && (
         <p className="mb-4 text-red-600" role="alert">
@@ -25,7 +25,7 @@ export default async function Page({ searchParams }: LoginPageProps) {
           Password
           <input
             autoComplete="current-password"
-            className="rounded border border-gray-400 px-3 py-2 text-black bg-neutral-100"
+            className="w-full min-w-0 rounded border border-gray-400 bg-neutral-100 px-3 py-2 text-black"
             name="password"
             required
             type="password"

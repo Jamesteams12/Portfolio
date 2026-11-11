@@ -56,7 +56,7 @@ export default async function Page({ searchParams }: AdminPageProps) {
     : params.error;
 
   return (
-    <section className="mx-auto w-full max-w-5xl px-6 py-10">
+    <section className="mx-auto w-full max-w-5xl px-4 py-8 sm:px-6 sm:py-10">
       <h1 className="mb-8 text-3xl font-bold">Manage projects</h1>
       {message && (
         <p
@@ -77,7 +77,7 @@ export default async function Page({ searchParams }: AdminPageProps) {
 
       <form
         action={createProject}
-        className="mb-10 grid gap-4 rounded-lg border border-gray-300 bg-white/90 p-6 text-gray-900 shadow-sm"
+        className="mb-10 grid min-w-0 gap-4 rounded-lg border border-gray-300 bg-white/90 p-4 text-gray-900 shadow-sm sm:p-6"
       >
         <h2 className="text-xl font-semibold">Create project</h2>
         <ProjectFields />
@@ -99,7 +99,7 @@ export default async function Page({ searchParams }: AdminPageProps) {
           {projects.map((project) => (
             <li
               key={project.id}
-              className="rounded-lg border border-gray-300 bg-white/90 p-6 text-gray-900 shadow-sm"
+              className="min-w-0 rounded-lg border border-gray-300 bg-white/90 p-4 text-gray-900 shadow-sm sm:p-6"
             >
               <form action={updateProject} className="grid gap-4">
                 <input name="id" type="hidden" value={project.id} />
@@ -133,55 +133,55 @@ export default async function Page({ searchParams }: AdminPageProps) {
 function ProjectFields({ project }: { project?: Project }) {
   return (
     <>
-      <label className="grid gap-1">
+      <label className="grid min-w-0 gap-1">
         Title
         <input
-          className="rounded border border-gray-400 px-3 py-2"
+          className="w-full min-w-0 rounded border border-gray-400 px-3 py-2"
           name="title"
           required
           defaultValue={project?.title}
         />
       </label>
-      <label className="grid gap-1">
+      <label className="grid min-w-0 gap-1">
         Slug
         <input
-          className="rounded border border-gray-400 px-3 py-2"
+          className="w-full min-w-0 rounded border border-gray-400 px-3 py-2"
           name="slug"
           required
           defaultValue={project?.slug}
         />
       </label>
-      <label className="grid gap-1">
+      <label className="grid min-w-0 gap-1">
         Description
         <textarea
-          className="rounded border border-gray-400 px-3 py-2"
+          className="w-full min-w-0 rounded border border-gray-400 px-3 py-2"
           name="description"
           rows={3}
           defaultValue={project?.description}
         />
       </label>
-      <label className="grid gap-1">
+      <label className="grid min-w-0 gap-1">
         GitHub URL
         <input
-          className="rounded border border-gray-400 px-3 py-2"
+          className="w-full min-w-0 rounded border border-gray-400 px-3 py-2"
           name="github_url"
           type="url"
           defaultValue={project?.github_url ?? ""}
         />
       </label>
-      <label className="grid gap-1">
+      <label className="grid min-w-0 gap-1">
         Live URL
         <input
-          className="rounded border border-gray-400 px-3 py-2"
+          className="w-full min-w-0 rounded border border-gray-400 px-3 py-2"
           name="live_url"
           type="url"
           defaultValue={project?.live_url ?? ""}
         />
       </label>
-      <label className="grid gap-1">
+      <label className="grid min-w-0 gap-1">
         Image URL
         <input
-          className="rounded border border-gray-400 px-3 py-2"
+          className="w-full min-w-0 rounded border border-gray-400 px-3 py-2"
           name="image_url"
           type="url"
           defaultValue={project?.image_url ?? ""}

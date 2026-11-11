@@ -24,6 +24,12 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+:where(a, button, input:not([type="hidden"]), textarea, select):focus-visible {
+  outline: 2px solid #fde047;
+  outline-offset: 3px;
+  transition: none;
+}
+
 .animated-background {
   background-size: 400% 400%;
   animation: gradient-shift 15s ease infinite;

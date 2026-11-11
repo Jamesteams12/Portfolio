@@ -74,7 +74,7 @@ export default async function Page() {
                     target="_blank"
                     rel="noreferrer"
                     aria-label={`View ${project.title} on GitHub`}
-                    className="rounded-md bg-sky-300 px-3 py-2 text-center text-sm font-semibold text-slate-950 transition-colors hover:bg-sky-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-200 sm:px-5 sm:text-base"
+                    className="rounded-md bg-sky-300 px-3 py-2 text-center text-sm font-semibold text-slate-950 transition-colors hover:bg-sky-200 sm:px-5 sm:text-base"
                   >
                     GitHub
                   </a>
@@ -85,7 +85,7 @@ export default async function Page() {
                     target="_blank"
                     rel="noreferrer"
                     aria-label={`View live ${project.title}`}
-                    className="rounded-md bg-green-300 px-3 py-2 text-center text-sm font-semibold text-slate-950 transition-colors hover:bg-green-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-200 sm:px-5 sm:text-base"
+                    className="rounded-md bg-green-300 px-3 py-2 text-center text-sm font-semibold text-slate-950 transition-colors hover:bg-green-200 sm:px-5 sm:text-base"
                   >
                     Live Demo
                   </a>

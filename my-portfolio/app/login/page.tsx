@@ -30,8 +30,8 @@ export default async function Page({ searchParams }: LoginPageProps) {
             autoComplete="current-password"
             className="w-full min-w-0 rounded border border-gray-400 bg-neutral-100 px-3 py-2 text-black"
             name="password"
-            required
             type="password"
+            required
           />
         </label>
         <button

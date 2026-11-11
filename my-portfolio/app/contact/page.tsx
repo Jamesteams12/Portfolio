@@ -14,7 +14,7 @@ export default async function Page({ searchParams }: ContactPageProps) {
     : params.success;
 
   return (
-    <section className="mx-auto w-full max-w-xl px-6 py-16">
+    <section className="mx-auto w-full max-w-xl px-4 py-12 sm:px-6 sm:py-16">
       <h1 className="mb-3 text-3xl font-bold text-white">Contact</h1>
       <p className="mb-8 text-white">
         Send me a message using the form below.
@@ -47,7 +47,7 @@ export default async function Page({ searchParams }: ContactPageProps) {
           Name
           <input
             autoComplete="name"
-            className="rounded border border-gray-300 bg-white px-3 py-2 text-gray-950"
+            className="w-full min-w-0 rounded border border-gray-300 bg-white px-3 py-2 text-gray-950"
             maxLength={200}
             name="name"
             required
@@ -57,7 +57,7 @@ export default async function Page({ searchParams }: ContactPageProps) {
           Email
           <input
             autoComplete="email"
-            className="rounded border border-gray-300 bg-white px-3 py-2 text-gray-950"
+            className="w-full min-w-0 rounded border border-gray-300 bg-white px-3 py-2 text-gray-950"
             maxLength={320}
             name="email"
             required
@@ -67,7 +67,7 @@ export default async function Page({ searchParams }: ContactPageProps) {
         <label className="flex flex-col gap-2 font-medium text-white">
           Message
           <textarea
-            className="min-h-36 resize-y rounded border border-gray-300 bg-white px-3 py-2 text-gray-950"
+            className="min-h-36 w-full min-w-0 resize-y rounded border border-gray-300 bg-white px-3 py-2 text-gray-950"
             maxLength={10000}
             name="message"
             required
@@ -75,7 +75,7 @@ export default async function Page({ searchParams }: ContactPageProps) {
           />
         </label>
         <button
-          className="w-fit rounded bg-gray-900 px-5 py-2.5 font-semibold text-white hover:bg-gray-700"
+          className="w-full rounded bg-gray-900 px-5 py-2.5 font-semibold text-white hover:bg-gray-700 sm:w-fit"
           type="submit"
         >
           Submit

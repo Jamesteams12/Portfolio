@@ -31,22 +31,22 @@ export default async function Page() {
   }
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold text-center mt-8">
+    <section className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6">
+      <h1 className="text-center text-3xl font-bold">
         Projects
       </h1>
-      <p className="text-center text-lg mt-4">
+      <p className="mx-auto mt-4 max-w-3xl text-center text-lg">
         This is all the projects I have worked on. Use the link on each card to view a project.
       </p>
-      <hr className="text-black" />
+      <hr className="mt-6 text-black" />
       {projects.length === 0 ? (
         <p className="mt-8 text-center">No projects to show yet.</p>
       ) : (
-        <ul className="mx-auto mt-8 grid max-w-5xl grid-cols-1 gap-5 px-4">
+        <ul className="mx-auto mt-8 grid max-w-5xl grid-cols-1 gap-5">
           {projects.map((project) => (
             <li
               key={project.id}
-              className="grid min-h-44 grid-cols-[minmax(0,1fr)_minmax(4rem,0.7fr)_auto] items-center gap-3 rounded-lg border-2 border-blue-900 bg-slate-950/90 p-4 text-white shadow-sm sm:gap-6 sm:p-6"
+              className="grid grid-cols-1 items-start gap-4 rounded-lg border-2 border-blue-900 bg-slate-950/90 p-4 text-white shadow-sm sm:grid-cols-[minmax(0,1fr)_minmax(8rem,0.65fr)] sm:items-center sm:gap-6 sm:p-6 lg:grid-cols-[minmax(0,1fr)_minmax(10rem,0.65fr)_auto]"
             >
               <div className="min-w-0">
                 <h2 className="break-words text-lg font-semibold sm:text-xl">
@@ -59,16 +59,15 @@ export default async function Page() {
                 )}
               </div>
               {project.image_url ? (
-                // eslint-disable-next-line @next/next/no-img-element
                 <img
                   src={project.image_url}
                   alt=""
-                  className="h-24 w-full rounded object-cover sm:h-32"
+                  className="aspect-video w-full rounded object-cover sm:aspect-auto sm:h-32"
                 />
               ) : (
                 <div aria-hidden="true" />
               )}
-              <div className="flex flex-wrap justify-end gap-2">
+              <div className="flex flex-wrap justify-start gap-2 sm:col-span-2 sm:justify-end lg:col-span-1 lg:col-start-3">
                 {project.github_url && (
                   <a
                     href={project.github_url}
@@ -96,6 +95,6 @@ export default async function Page() {
           ))}
         </ul>
       )}
-    </div>
+    </section>
   );
 }

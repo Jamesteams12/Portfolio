@@ -26,11 +26,11 @@ This site is my portfolio and also my capstone: a working full-stack app. It wil
 
 ## Environment Variables
 
-ADMIN_PASSWORD=
-AUTH_SECRET=
-NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=
-SUPABASE_SERVICE_ROLE_KEY=
+- ADMIN_PASSWORD=
+- AUTH_SECRET=
+- NEXT_PUBLIC_SUPABASE_URL=
+- NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=
+- SUPABASE_SERVICE_ROLE_KEY=
 
 ## Skills and credentials
  
@@ -46,6 +46,6 @@ What the reviewer said: "The wireframes show a good structure, but the Projects 
 
 Reflection from the review: The feedback highlighted the importance of showcasing projects in a more visual way. I will plan to change the method for Project page to a project cards method containing screenshots, technology stacks, and repository links to make my work easier to evaluate.
 
-Reflection for Week 34
+Reflection for Week 35
 
-This week I developed the Projects section of my portfolio and created a detailed case study for my capstone project. I documented the problem being solved, my role, the technologies used, screenshots of the application and links to the repository and live deployment. This helped improve how I present my work to potential employers.
+I implemented a contact form for my contacts that saves submissions to Supabase and secured the messages using RLS so only I can view them and no one else can see them. I chose a honeypot field for spam protection because easy to maintain and does not need a lot code to implement. I added a downloadable CV to the site (Does not have a CV yet to download until I make one) and tested the portfolio on mobile, tablet and desktop size screens by using the developer tool. The worst layout issue I fixed was the navigation menu overflowing on smaller screens.

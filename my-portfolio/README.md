@@ -29,7 +29,13 @@ not be committed. Generate an `AUTH_SECRET` with `npx auth secret`. Visiting
 The Projects page reads published entries from the Supabase `public.projects`
 table. In the Supabase dashboard, open **SQL Editor** and run
 [`supabase/migrations/20261026120000_create_projects.sql`](./supabase/migrations/20261026120000_create_projects.sql)
-to create the table and enable read-only access to published projects.
+to create the table and enable read-only access to published projects. Then run
+[`supabase/migrations/20261111090000_add_project_link_columns.sql`](./supabase/migrations/20261111090000_add_project_link_columns.sql)
+to ensure the optional `url` and `image_url` columns exist, including on an
+already-created table. Then run
+[`supabase/migrations/20261111093000_add_project_github_and_live_urls.sql`](./supabase/migrations/20261111093000_add_project_github_and_live_urls.sql)
+to add separate GitHub and live-demo links. Existing `url` values are copied
+into the live-demo link.
 
 Copy the project URL and publishable key from **Project Settings → API** into
 `my-portfolio/.env.local` as `NEXT_PUBLIC_SUPABASE_URL` and
@@ -37,10 +43,10 @@ Copy the project URL and publishable key from **Project Settings → API** into
 the table's row-level security policy limits reads to published rows. Never
 put a service-role/secret key in a `NEXT_PUBLIC_` variable.
 
-Add project entries in the table with `title`, `slug`, `description`, and
-optional `url` and `image_url`; set `published` to `true` to display them.
-`sort_order` controls their order (lower values appear first). Restart the dev
-server after changing environment variables.
+Add project entries in the admin page with `title`, `slug`, `description`, and
+optional GitHub URL, live URL, and image URL; set `published` to `true` to
+display them. `sort_order` controls their order (lower values appear first).
+Restart the dev server after changing environment variables.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
@@ -49,9 +55,12 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 Contact form submissions can be stored in the Supabase `public.contacts` table.
 Run
 [`supabase/migrations/20261109100000_create_contacts.sql`](./supabase/migrations/20261109100000_create_contacts.sql)
-in the Supabase SQL Editor to create it. Anonymous and authenticated users can
-insert submissions, but row-level security does not allow them to read contact
-records.
+and then
+[`supabase/migrations/20261109183000_restrict_contacts_access.sql`](./supabase/migrations/20261109183000_restrict_contacts_access.sql)
+in the Supabase SQL Editor. Visitors can insert submissions but cannot read,
+update, or delete them. The server-side admin client uses the service-role key
+to manage contact records; never expose that key to the browser or a `NEXT_PUBLIC_`
+variable.
 
 ## Learn More
 

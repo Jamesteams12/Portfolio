@@ -9,7 +9,8 @@ type Project = {
   title: string;
   description: string;
   slug: string;
-  url: string | null;
+  github_url: string | null;
+  live_url: string | null;
   image_url: string | null;
   published: boolean;
   sort_order: number;
@@ -36,7 +37,7 @@ export default async function Page({ searchParams }: AdminPageProps) {
     getSupabaseAdminClient()
       .from("projects")
       .select(
-        "id, title, description, slug, url, image_url, published, sort_order",
+        "id, title, description, slug, github_url, live_url, image_url, published, sort_order",
       )
       .order("sort_order", { ascending: true })
       .returns<Project[]>(),
@@ -160,12 +161,21 @@ function ProjectFields({ project }: { project?: Project }) {
         />
       </label>
       <label className="grid gap-1">
-        Project URL
+        GitHub URL
         <input
           className="rounded border border-gray-400 px-3 py-2"
-          name="url"
+          name="github_url"
           type="url"
-          defaultValue={project?.url ?? ""}
+          defaultValue={project?.github_url ?? ""}
+        />
+      </label>
+      <label className="grid gap-1">
+        Live URL
+        <input
+          className="rounded border border-gray-400 px-3 py-2"
+          name="live_url"
+          type="url"
+          defaultValue={project?.live_url ?? ""}
         />
       </label>
       <label className="grid gap-1">

@@ -6,7 +6,8 @@ type Project = {
   title: string;
   description: string;
   slug: string;
-  url: string | null;
+  github_url: string | null;
+  live_url: string | null;
   image_url: string | null;
   sort_order: number;
 };
@@ -18,7 +19,9 @@ export default async function Page() {
 
   const { data: projects, error } = await getSupabaseClient()
     .from("projects")
-    .select("id, title, description, slug, url, image_url, sort_order")
+    .select(
+      "id, title, description, slug, github_url, live_url, image_url, sort_order",
+    )
     .eq("published", true)
     .order("sort_order", { ascending: true })
     .returns<Project[]>();
@@ -65,17 +68,30 @@ export default async function Page() {
               ) : (
                 <div aria-hidden="true" />
               )}
-              {project.url && (
-                <a
-                  href={project.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`View ${project.title}`}
-                  className="justify-self-end rounded-md bg-sky-300 px-3 py-2 text-center text-sm font-semibold text-slate-950 transition-colors hover:bg-sky-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-200 sm:px-5 sm:text-base"
-                >
-                  View project
-                </a>
-              )}
+              <div className="flex flex-wrap justify-end gap-2">
+                {project.github_url && (
+                  <a
+                    href={project.github_url}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`View ${project.title} on GitHub`}
+                    className="rounded-md bg-sky-300 px-3 py-2 text-center text-sm font-semibold text-slate-950 transition-colors hover:bg-sky-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-200 sm:px-5 sm:text-base"
+                  >
+                    GitHub
+                  </a>
+                )}
+                {project.live_url && (
+                  <a
+                    href={project.live_url}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`View live ${project.title}`}
+                    className="rounded-md bg-green-300 px-3 py-2 text-center text-sm font-semibold text-slate-950 transition-colors hover:bg-green-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-200 sm:px-5 sm:text-base"
+                  >
+                    Live Demo
+                  </a>
+                )}
+              </div>
             </li>
           ))}
         </ul>

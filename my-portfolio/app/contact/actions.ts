@@ -9,9 +9,10 @@ function getContactField(formData: FormData, name: string) {
 }
 
 export async function submitContact(formData: FormData) {
-  const website = getContactField(formData, "website");
+  const website = getContactField(formData, "contact_website");
   if (website) {
-    redirect("/contact?success=1");
+    console.warn("Discarded contact submission because the honeypot was filled.");
+    redirect("/contact?error=submit-failed");
   }
 
   const name = getContactField(formData, "name");

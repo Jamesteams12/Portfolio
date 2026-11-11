@@ -2,7 +2,7 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #ffffff;
 }
 
 @theme inline {
@@ -14,8 +14,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #000000;
+    --foreground: #ffffff;
   }
 }
 
@@ -25,7 +25,7 @@ body {
 }
 
 :where(a, button, input:not([type="hidden"]), textarea, select):focus-visible {
-  outline: 2px solid #fde047;
+  outline: 2px solid #eeff00;
   outline-offset: 3px;
   transition: none;
 }

@@ -9,7 +9,8 @@ type ProjectFields = {
   title: string;
   description: string;
   slug: string;
-  url: string | null;
+  github_url: string | null;
+  live_url: string | null;
   image_url: string | null;
   published: boolean;
   sort_order: number;
@@ -30,7 +31,8 @@ function getProjectFields(formData: FormData): ProjectFields {
   const title = formData.get("title");
   const description = formData.get("description");
   const slug = formData.get("slug");
-  const url = formData.get("url");
+  const githubUrl = formData.get("github_url");
+  const liveUrl = formData.get("live_url");
   const imageUrl = formData.get("image_url");
   const sortOrder = formData.get("sort_order");
 
@@ -40,7 +42,8 @@ function getProjectFields(formData: FormData): ProjectFields {
     typeof description !== "string" ||
     typeof slug !== "string" ||
     !slug.trim() ||
-    typeof url !== "string" ||
+    typeof githubUrl !== "string" ||
+    typeof liveUrl !== "string" ||
     typeof imageUrl !== "string" ||
     typeof sortOrder !== "string"
   ) {
@@ -59,14 +62,16 @@ function getProjectFields(formData: FormData): ProjectFields {
     );
   }
 
-  const projectUrl = parseOptionalWebUrl(url, "Project URL");
+  const githubUrlValue = parseOptionalWebUrl(githubUrl, "GitHub URL");
+  const liveUrlValue = parseOptionalWebUrl(liveUrl, "Live URL");
   const imageUrlValue = parseOptionalWebUrl(imageUrl, "Image URL");
 
   return {
     title: title.trim(),
     description: description.trim(),
     slug: slug.trim(),
-    url: projectUrl,
+    github_url: githubUrlValue,
+    live_url: liveUrlValue,
     image_url: imageUrlValue,
     published: formData.get("published") === "on",
     sort_order: parsedSortOrder,

@@ -9,6 +9,11 @@ function getContactField(formData: FormData, name: string) {
 }
 
 export async function submitContact(formData: FormData) {
+  const website = getContactField(formData, "website");
+  if (website) {
+    redirect("/contact?success=1");
+  }
+
   const name = getContactField(formData, "name");
   const email = getContactField(formData, "email");
   const message = getContactField(formData, "message");

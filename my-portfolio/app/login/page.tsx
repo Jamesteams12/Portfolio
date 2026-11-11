@@ -14,7 +14,10 @@ export default async function Page({ searchParams }: LoginPageProps) {
     <section className="mx-auto w-full max-w-md px-4 py-12 sm:px-6 sm:py-16">
       <h1 className="mb-6 text-3xl font-bold">Admin login</h1>
       {error && (
-        <p className="mb-4 text-red-600" role="alert">
+        <p
+          className="mb-4 rounded border border-red-300 bg-red-50 px-3 py-2 text-red-900"
+          role="alert"
+        >
           {error === "CredentialsSignin"
             ? "Incorrect password. Please try again."
             : "Unable to sign in. Please try again."}

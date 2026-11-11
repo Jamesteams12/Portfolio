@@ -1,11 +1,26 @@
 "use server";
 
-import { getSupabaseClient } from "@/lib/supabase";
+import { createHmac } from "node:crypto";
+import { isIP } from "node:net";
+import { headers } from "next/headers";
+import { getSupabaseAdminClient } from "@/lib/supabase";
 import { redirect } from "next/navigation";
 
 function getContactField(formData: FormData, name: string) {
   const value = formData.get(name);
   return typeof value === "string" ? value.trim() : "";
+}
+
+function getClientIp(requestHeaders: Headers) {
+  const forwardedIps = requestHeaders.get("x-forwarded-for")?.split(",") ?? [];
+  const candidates = [
+    requestHeaders.get("x-real-ip"),
+    ...forwardedIps,
+  ];
+
+  return candidates
+    .map((ip) => ip?.trim())
+    .find((ip): ip is string => Boolean(ip && isIP(ip)));
 }
 
 export async function submitContact(formData: FormData) {
@@ -31,14 +46,48 @@ export async function submitContact(formData: FormData) {
     redirect("/contact?error=invalid");
   }
 
+  let rateLimited = false;
   let submissionError: unknown;
   try {
-    const { error } = await getSupabaseClient()
-      .from("contacts")
-      .insert({ name, email, message });
-    submissionError = error;
+    const supabase = getSupabaseAdminClient();
+    const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!serviceRoleKey) {
+      throw new Error("Missing SUPABASE_SERVICE_ROLE_KEY.");
+    }
+
+    const clientIp = getClientIp(await headers());
+    if (!clientIp) {
+      throw new Error("Unable to determine client IP for contact rate limiting.");
+    }
+
+    const ipHash = createHmac("sha256", serviceRoleKey)
+      .update(clientIp)
+      .digest("hex");
+    const { data: allowed, error: rateLimitError } = await supabase.rpc(
+      "consume_contact_submission",
+      { p_ip_hash: ipHash },
+    );
+
+    if (rateLimitError) {
+      throw rateLimitError;
+    }
+    if (typeof allowed !== "boolean") {
+      throw new Error("Contact rate-limit function returned an invalid result.");
+    }
+    if (!allowed) {
+      rateLimited = true;
+    } else {
+      const { error } = await supabase
+        .from("contacts")
+        .insert({ name, email, message });
+      submissionError = error;
+    }
   } catch (error) {
     submissionError = error;
+  }
+
+  if (rateLimited) {
+    redirect("/contact?error=rate-limited");
   }
 
   if (submissionError) {

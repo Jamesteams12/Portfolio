@@ -35,6 +35,11 @@ export default async function Page({ searchParams }: ContactPageProps) {
           We couldn&apos;t send your message. Please try again.
         </p>
       )}
+      {error === "rate-limited" && (
+        <p className="mb-6 rounded bg-red-100 px-4 py-3 text-red-900" role="alert">
+          Too many messages were sent. Please wait 15 minutes before trying again.
+        </p>
+      )}
 
       <form action={submitContact} className="flex flex-col gap-5">
         <div aria-hidden="true" className="absolute left-[-9999px]">

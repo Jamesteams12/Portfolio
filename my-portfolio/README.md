@@ -57,10 +57,19 @@ Run
 [`supabase/migrations/20261109100000_create_contacts.sql`](./supabase/migrations/20261109100000_create_contacts.sql)
 and then
 [`supabase/migrations/20261109183000_restrict_contacts_access.sql`](./supabase/migrations/20261109183000_restrict_contacts_access.sql)
-in the Supabase SQL Editor. Visitors can insert submissions but cannot read,
-update, or delete them. The server-side admin client uses the service-role key
-to manage contact records; never expose that key to the browser or a `NEXT_PUBLIC_`
-variable.
+and
+[`supabase/migrations/20261111143500_harden_contact_submissions.sql`](./supabase/migrations/20261111143500_harden_contact_submissions.sql)
+in the Supabase SQL Editor. The contact server action uses the server-only
+service-role client after validating the form and rate limit; the public and
+authenticated API roles cannot access the table directly. The rate limit allows
+five submissions per IP per 15-minute window. IP addresses are HMACed before
+being stored, and expired rate-limit rows are cleaned up automatically.
+
+The app's admin login is NextAuth-based, not Supabase Auth. Any future contact
+reader must verify the admin session before using the service-role client; that
+key bypasses RLS and must never be exposed to the browser or a `NEXT_PUBLIC_`
+variable. Configure the deployment proxy to set trustworthy `x-real-ip` or
+`x-forwarded-for` headers so rate limits cannot be bypassed by spoofing the IP.
 
 ## Learn More
 

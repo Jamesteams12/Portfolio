@@ -26,7 +26,7 @@ export default function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`inline-flex min-h-11 items-center px-1 transition-colors hover:text-blue-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${
+                className={`inline-flex min-h-11 items-center px-1 transition-colors hover:text-blue-400 ${
                   isActive ? "text-blue-400 font-semibold" : "text-gray-300"
                 }`}
               >

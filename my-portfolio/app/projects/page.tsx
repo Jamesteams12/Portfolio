@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   title: "Projects | TJ Fraser Portfolio",
   description:
     "Explore web applications and software projects built by TJ Fraser, with descriptions and links to source code and live demos.",
+  openGraph: {
+    title: "Projects | TJ Fraser Portfolio",
+    description:
+      "Explore web applications and software projects built by TJ Fraser, with descriptions and links to source code and live demos.",
+  },
 };
 
 type Project = {

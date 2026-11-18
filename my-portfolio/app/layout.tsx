@@ -14,10 +14,37 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "TJ Fraser Portfolio",
   description:
     "Portfolio of TJ Fraser, an aspiring software developer showcasing web applications, projects, and technical skills.",
+  openGraph: {
+    type: "website",
+    title: "TJ Fraser Portfolio",
+    description:
+      "Portfolio of TJ Fraser, an aspiring software developer showcasing web applications, projects, and technical skills.",
+    siteName: "TJ Fraser Portfolio",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "TJ Fraser Portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "TJ Fraser Portfolio",
+    description:
+      "Portfolio of TJ Fraser, an aspiring software developer showcasing web applications, projects, and technical skills.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

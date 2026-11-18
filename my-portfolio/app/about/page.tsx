@@ -4,6 +4,11 @@ export const metadata: Metadata = {
   title: "About | TJ Fraser Portfolio",
   description:
     "Learn about TJ Fraser's journey as an aspiring software developer and review his experience, interests, and CV.",
+  openGraph: {
+    title: "About | TJ Fraser Portfolio",
+    description:
+      "Learn about TJ Fraser's journey as an aspiring software developer and review his experience, interests, and CV.",
+  },
 };
 
 export default function Page() {

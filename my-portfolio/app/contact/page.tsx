@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import { submitContact } from "./actions";
+
+export const metadata: Metadata = {
+  title: "Contact | TJ Fraser Portfolio",
+  description:
+    "Get in touch with TJ Fraser about software development opportunities, collaborations, or projects.",
+};
 
 type ContactPageProps = {
   searchParams: Promise<{ error?: string | string[]; success?: string | string[] }>;

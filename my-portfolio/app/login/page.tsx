@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import { authenticate } from "./actions";
+
+export const metadata: Metadata = {
+  title: "Admin Login | TJ Fraser Portfolio",
+  description: "Sign in to manage the TJ Fraser portfolio.",
+  robots: { index: false, follow: false },
+};
 
 type LoginPageProps = {
   searchParams: Promise<{ error?: string | string[] }>;

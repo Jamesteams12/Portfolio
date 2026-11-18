@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
 import { auth } from "@/auth";
 import { createProject, deleteProject, updateProject } from "./actions";
 import { getSupabaseAdminClient } from "@/lib/supabase";
 import { redirect } from "next/navigation";
 import { connection } from "next/server";
+
+export const metadata: Metadata = {
+  title: "Admin | TJ Fraser Portfolio",
+  description: "Manage projects displayed in the TJ Fraser portfolio.",
+  robots: { index: false, follow: false },
+};
 
 type Project = {
   id: string;

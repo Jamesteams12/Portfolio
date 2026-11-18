@@ -3,7 +3,8 @@ import { authenticate } from "./actions";
 
 export const metadata: Metadata = {
   title: "Admin Login | TJ Fraser Portfolio",
-  description: "Sign in to manage the TJ Fraser portfolio.",
+  description:
+    "Secure administrator login for managing projects and portfolio content.",
   robots: { index: false, follow: false },
 };
 

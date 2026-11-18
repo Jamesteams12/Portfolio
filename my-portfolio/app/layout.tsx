@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "TJ Fraser Portfolio",
   description:
-    "The portfolio of TJ Fraser, an aspiring software developer showcasing projects, skills, and ways to get in touch.",
+    "Portfolio of TJ Fraser, an aspiring software developer showcasing web applications, projects, and technical skills.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

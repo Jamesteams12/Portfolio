@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Skills | TJ Fraser Portfolio",
   description:
-    "View TJ Fraser's technical skills and software development capabilities.",
+    "Explore TJ Fraser's programming languages, frameworks, development tools, and technical skills.",
 };
 
 export default function Page() {

@@ -7,7 +7,8 @@ import { connection } from "next/server";
 
 export const metadata: Metadata = {
   title: "Admin | TJ Fraser Portfolio",
-  description: "Manage projects displayed in the TJ Fraser portfolio.",
+  description:
+    "Administrator dashboard for creating, updating, publishing, and removing portfolio projects.",
   robots: { index: false, follow: false },
 };
 

@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 export const metadata: Metadata = {
   title: "TJ Fraser | Aspiring Software Developer",
   description:
-    "Explore TJ Fraser's software development portfolio, projects, and experience.",
+    "Discover TJ Fraser's software development work, featured projects, technical skills, and professional background.",
 };
 
 export default function Home() {

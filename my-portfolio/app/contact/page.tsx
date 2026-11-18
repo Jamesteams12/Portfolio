@@ -4,7 +4,7 @@ import { submitContact } from "./actions";
 export const metadata: Metadata = {
   title: "Contact | TJ Fraser Portfolio",
   description:
-    "Get in touch with TJ Fraser about software development opportunities, collaborations, or projects.",
+    "Contact TJ Fraser to discuss software development opportunities, collaboration, freelance projects, or technical work.",
 };
 
 type ContactPageProps = {

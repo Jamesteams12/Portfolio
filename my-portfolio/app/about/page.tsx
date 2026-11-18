@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About | TJ Fraser Portfolio",
+  description:
+    "Learn about TJ Fraser, an aspiring software developer, and download his CV.",
+};
+
 export default function Page() {
   return (
     <section className="mx-auto w-full max-w-xl px-6 py-16">

@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import { getSupabaseClient } from "@/lib/supabase";
 import { connection } from "next/server";
+
+export const metadata: Metadata = {
+  title: "Projects | TJ Fraser Portfolio",
+  description:
+    "Browse software development projects created by TJ Fraser, with source code and live demo links.",
+};
 
 type Project = {
   id: string;

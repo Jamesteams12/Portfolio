@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   description:
     "Secure administrator login for managing projects and portfolio content.",
   robots: { index: false, follow: false },
+  openGraph: {
+    title: "Admin Login | TJ Fraser Portfolio",
+    description:
+      "Secure administrator login for managing projects and portfolio content.",
+  },
 };
 
 type LoginPageProps = {

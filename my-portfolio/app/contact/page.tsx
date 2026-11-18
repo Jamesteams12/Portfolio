@@ -5,6 +5,11 @@ export const metadata: Metadata = {
   title: "Contact | TJ Fraser Portfolio",
   description:
     "Contact TJ Fraser to discuss software development opportunities, collaboration, freelance projects, or technical work.",
+  openGraph: {
+    title: "Contact | TJ Fraser Portfolio",
+    description:
+      "Contact TJ Fraser to discuss software development opportunities, collaboration, freelance projects, or technical work.",
+  },
 };
 
 type ContactPageProps = {

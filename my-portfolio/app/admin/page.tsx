@@ -10,6 +10,11 @@ export const metadata: Metadata = {
   description:
     "Administrator dashboard for creating, updating, publishing, and removing portfolio projects.",
   robots: { index: false, follow: false },
+  openGraph: {
+    title: "Admin | TJ Fraser Portfolio",
+    description:
+      "Administrator dashboard for creating, updating, publishing, and removing portfolio projects.",
+  },
 };
 
 type Project = {

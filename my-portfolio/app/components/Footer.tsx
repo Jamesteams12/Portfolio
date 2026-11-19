@@ -8,6 +8,14 @@ export default async function Footer() {
           &copy; {new Date().getFullYear()} My Portfolio. All rights reserved.
         </span>
         <a
+          href="https://github.com/Jamesteams12"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-semibold text-white underline underline-offset-4 transition-colors hover:text-blue-400"
+        >
+          GitHub
+        </a>
+        <a
           href="https://www.linkedin.com/in/tj-fraser-419252433/"
           target="_blank"
           rel="noopener noreferrer"

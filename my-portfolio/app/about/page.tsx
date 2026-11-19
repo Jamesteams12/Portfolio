@@ -8,6 +8,14 @@ export const metadata: Metadata = {
     title: "About | TJ Fraser Portfolio",
     description:
       "Learn about TJ Fraser's journey as an aspiring software developer and review his experience, interests, and CV.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "TJ Fraser Portfolio",
+      },
+    ],
   },
 };
 

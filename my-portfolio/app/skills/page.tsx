@@ -8,6 +8,14 @@ export const metadata: Metadata = {
     title: "Skills | TJ Fraser Portfolio",
     description:
       "Explore TJ Fraser's programming languages, frameworks, development tools, and technical skills.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "TJ Fraser Portfolio",
+      },
+    ],
   },
 };
 

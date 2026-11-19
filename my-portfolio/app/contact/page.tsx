@@ -9,6 +9,14 @@ export const metadata: Metadata = {
     title: "Contact | TJ Fraser Portfolio",
     description:
       "Contact TJ Fraser to discuss software development opportunities, collaboration, freelance projects, or technical work.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "TJ Fraser Portfolio",
+      },
+    ],
   },
 };
 

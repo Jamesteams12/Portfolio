@@ -14,6 +14,14 @@ export const metadata: Metadata = {
     title: "Admin | TJ Fraser Portfolio",
     description:
       "Administrator dashboard for creating, updating, publishing, and removing portfolio projects.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "TJ Fraser Portfolio",
+      },
+    ],
   },
 };
 

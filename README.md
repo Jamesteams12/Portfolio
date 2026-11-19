@@ -46,6 +46,6 @@ What the reviewer said: "The wireframes show a good structure, but the Projects 
 
 Reflection from the review: The feedback highlighted the importance of showcasing projects in a more visual way. I will plan to change the method for Project page to a project cards method containing screenshots, technology stacks, and repository links to make my work easier to evaluate.
 
-## Reflection for Week 35
+## Reflection for Week 36
 
-I implemented a contact form for my contacts that saves submissions to Supabase and secured the messages using RLS so only I can view them and no one else can see them. I chose a honeypot field for spam protection because easy to maintain and does not need a lot code to implement. I added a downloadable CV to the site (Does not have a CV yet to download until I make one) and tested the portfolio on mobile, tablet and desktop size screens by using the developer tool. The worst layout issue I fixed was the navigation menu overflowing on smaller screens.
+I improved the portfolio's discoverability by implementing SEO metadata, Open Graph sharing tags, a sitemap, and a robots.txt file. I optimized the site using Lighthouse and achieved scores above 90 for both SEO and accessibility. I also added links to my LinkedIn and GitHub profiles and tested all external links to ensure they function correctly.

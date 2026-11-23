@@ -18,7 +18,7 @@ export default function Navbar() {
   return (
     <nav aria-label="Main navigation" className="bg-gray-900 p-4 text-white">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 sm:flex-row sm:justify-between">
-        <div className="text-xl font-bold">Tj Fraser</div>
+        <div className="text-xl font-bold">Portfolio</div>
         <div className="flex flex-wrap justify-center gap-x-3 gap-y-1 sm:gap-x-5">
           {navItems.map((item) => {
             const isActive = pathname === item.href;

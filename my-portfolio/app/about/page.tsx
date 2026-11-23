@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "About | TJ Fraser Portfolio",
-  description:
-    "Learn about TJ Fraser's journey as an aspiring software developer and review his experience, interests, and CV.",
+  description: "Learn about TJ Fraser, his experience, interests, and CV.",
   openGraph: {
     title: "About | TJ Fraser Portfolio",
-    description:
-      "Learn about TJ Fraser's journey as an aspiring software developer and review his experience, interests, and CV.",
+    description: "Learn about TJ Fraser, his experience, interests, and CV.",
     images: [
       {
         url: "/og-image.png",
@@ -19,12 +18,57 @@ export const metadata: Metadata = {
   },
 };
 
+const profile = {
+  name: "TJ Fraser",
+  careerTitle: "Aspiring Software Developer",
+  biography: "",
+  photoSrc: "",
+};
+
 export default function Page() {
   return (
-    <section className="mx-auto w-full max-w-xl px-6 py-16">
-      <h1 className="mb-6 text-3xl font-bold text-white">About</h1>
+    <section className="mx-auto w-full max-w-3xl px-6 py-12 text-white sm:py-16">
+      <header className="grid grid-cols-[7rem_minmax(0,1fr)] items-center gap-5 sm:grid-cols-[12rem_minmax(0,1fr)] sm:gap-8">
+        {profile.photoSrc ? (
+          <Image
+            alt={profile.name}
+            className="aspect-square size-28 rounded-full object-cover sm:size-48"
+            height={192}
+            src={profile.photoSrc}
+            width={192}
+          />
+        ) : (
+          <div
+            aria-hidden="true"
+            className="flex aspect-square size-28 items-center justify-center rounded-full bg-white/15 text-3xl font-bold sm:size-48 sm:text-5xl"
+          >
+            {profile.name
+              .split(/\s+/)
+              .map((part) => part[0])
+              .join("")}
+          </div>
+        )}
+        <div className="min-w-0">
+          <h1 className="break-words text-3xl font-bold sm:text-5xl">
+            {profile.name}
+          </h1>
+          <p className="mt-2 text-lg sm:text-2xl">{profile.careerTitle}</p>
+        </div>
+      </header>
+
+      <section aria-labelledby="about-heading" className="mt-10">
+        <h2 id="about-heading" className="text-2xl font-bold sm:text-3xl">
+          About
+        </h2>
+        {profile.biography && (
+          <p className="mt-4 whitespace-pre-line text-lg leading-relaxed">
+            {profile.biography}
+          </p>
+        )}
+      </section>
+
       <a
-        className="inline-block w-fit rounded bg-gray-900 px-5 py-2.5 font-semibold text-white hover:bg-gray-700"
+        className="mt-8 inline-block w-fit rounded bg-gray-900 px-5 py-2.5 font-semibold text-white hover:bg-gray-700"
         download="TJ-Fraser-CV.pdf"
         href="/cv/TJ-Fraser-CV.pdf"
       >

@@ -16,6 +16,12 @@ type ProjectFields = {
   sort_order: number;
 };
 
+type SkillFields = {
+  name: string;
+  url: string | null;
+  self_taught: boolean;
+};
+
 const POSTGRES_INTEGER_MIN = -2_147_483_648;
 const POSTGRES_INTEGER_MAX = 2_147_483_647;
 
@@ -78,6 +84,35 @@ function getProjectFields(formData: FormData): ProjectFields {
   };
 }
 
+function getSkillFields(formData: FormData): SkillFields {
+  const name = formData.get("name");
+  const url = formData.get("url");
+  const evidenceType = formData.get("evidence_type");
+
+  if (
+    typeof name !== "string" ||
+    !name.trim() ||
+    name.trim().length > 100 ||
+    (evidenceType !== "website" && evidenceType !== "self_taught")
+  ) {
+    throw new Error("Please provide a skill name and valid evidence option.");
+  }
+
+  const selfTaught = evidenceType === "self_taught";
+  if (!selfTaught && (typeof url !== "string" || !url.trim())) {
+    throw new Error("A website URL is required for linked skills.");
+  }
+
+  return {
+    name: name.trim(),
+    url:
+      selfTaught || typeof url !== "string"
+        ? null
+        : parseOptionalWebUrl(url, "Website URL"),
+    self_taught: selfTaught,
+  };
+}
+
 function parseOptionalWebUrl(value: string, fieldName: string): string | null {
   const trimmedValue = value.trim();
   if (!trimmedValue) {
@@ -104,10 +139,63 @@ function parseOptionalWebUrl(value: string, fieldName: string): string | null {
   return parsedUrl.toString();
 }
 
-async function finishAction(message: string) {
+async function finishAction(
+  message: string,
+  tab: "projects" | "skills" = "projects",
+) {
   revalidatePath("/admin");
-  revalidatePath("/projects");
-  redirect(`/admin?message=${encodeURIComponent(message)}`);
+  revalidatePath(tab === "skills" ? "/skills" : "/projects");
+  redirect(`/admin?tab=${tab}&message=${encodeURIComponent(message)}`);
+}
+
+export async function createSkill(formData: FormData) {
+  await requireAdmin();
+
+  let skill: SkillFields;
+  try {
+    skill = getSkillFields(formData);
+  } catch (error) {
+    redirect(
+      `/admin?tab=skills&error=${encodeURIComponent(error instanceof Error ? error.message : "Invalid skill details.")}`,
+    );
+  }
+
+  const { error } = await getSupabaseAdminClient().from("skills").insert(skill);
+
+  if (error) {
+    redirect(
+      `/admin?tab=skills&error=${encodeURIComponent(`Unable to add skill: ${error.message}`)}`,
+    );
+  }
+
+  await finishAction("Skill added.", "skills");
+}
+
+export async function deleteSkill(formData: FormData) {
+  await requireAdmin();
+
+  const id = formData.get("id");
+  if (typeof id !== "string" || !id) {
+    redirect("/admin?tab=skills&error=Missing%20skill%20ID.");
+  }
+
+  const { data, error } = await getSupabaseAdminClient()
+    .from("skills")
+    .delete()
+    .eq("id", id)
+    .select("id")
+    .maybeSingle();
+
+  if (error) {
+    redirect(
+      `/admin?tab=skills&error=${encodeURIComponent(`Unable to remove skill: ${error.message}`)}`,
+    );
+  }
+  if (!data) {
+    redirect("/admin?tab=skills&error=Skill%20not%20found.");
+  }
+
+  await finishAction("Skill removed.", "skills");
 }
 
 export async function createProject(formData: FormData) {

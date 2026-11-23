@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import { auth } from "@/auth";
-import { createProject, deleteProject, updateProject } from "./actions";
+import Link from "next/link";
+import {
+  createProject,
+  deleteProject,
+  deleteSkill,
+  updateProject,
+} from "./actions";
+import SkillForm from "./SkillForm";
 import { getSupabaseAdminClient } from "@/lib/supabase";
 import { redirect } from "next/navigation";
 import { connection } from "next/server";
@@ -8,12 +15,12 @@ import { connection } from "next/server";
 export const metadata: Metadata = {
   title: "Admin | TJ Fraser Portfolio",
   description:
-    "Administrator dashboard for creating, updating, publishing, and removing portfolio projects.",
+    "Administrator dashboard for managing portfolio skills and projects.",
   robots: { index: false, follow: false },
   openGraph: {
     title: "Admin | TJ Fraser Portfolio",
     description:
-      "Administrator dashboard for creating, updating, publishing, and removing portfolio projects.",
+      "Administrator dashboard for managing portfolio skills and projects.",
     images: [
       {
         url: "/og-image.png",
@@ -37,8 +44,16 @@ type Project = {
   sort_order: number;
 };
 
+type Skill = {
+  id: string;
+  name: string;
+  url: string | null;
+  self_taught: boolean;
+};
+
 type AdminPageProps = {
   searchParams: Promise<{
+    tab?: string | string[];
     message?: string | string[];
     error?: string | string[];
   }>;
@@ -54,19 +69,36 @@ export default async function Page({ searchParams }: AdminPageProps) {
     redirect("/login");
   }
 
-  const [{ data: projects, error }, params] = await Promise.all([
-    getSupabaseAdminClient()
+  const params = await searchParams;
+  const activeTab = params.tab === "skills" ? "skills" : "projects";
+  const supabase = getSupabaseAdminClient();
+  let projects: Project[] = [];
+  let skills: Skill[] = [];
+
+  if (activeTab === "skills") {
+    const { data, error } = await supabase
+      .from("skills")
+      .select("id, name, url, self_taught")
+      .order("name", { ascending: true })
+      .returns<Skill[]>();
+
+    if (error) {
+      throw new Error(`Unable to load skills: ${error.message}`);
+    }
+    skills = data;
+  } else {
+    const { data, error } = await supabase
       .from("projects")
       .select(
         "id, title, description, slug, github_url, live_url, image_url, published, sort_order",
       )
       .order("sort_order", { ascending: true })
-      .returns<Project[]>(),
-    searchParams,
-  ]);
+      .returns<Project[]>();
 
-  if (error) {
-    throw new Error(`Unable to load projects: ${error.message}`);
+    if (error) {
+      throw new Error(`Unable to load projects: ${error.message}`);
+    }
+    projects = data;
   }
 
   const message = Array.isArray(params.message)
@@ -78,7 +110,29 @@ export default async function Page({ searchParams }: AdminPageProps) {
 
   return (
     <section className="mx-auto w-full max-w-5xl px-4 py-8 sm:px-6 sm:py-10">
-      <h1 className="mb-8 text-3xl font-bold">Manage projects</h1>
+      <nav
+        aria-label="Admin pages"
+        className="mb-8 flex flex-wrap gap-3 border-b border-white/30 pb-4"
+      >
+        <Link
+          aria-current={activeTab === "projects" ? "page" : undefined}
+          className={`rounded px-4 py-2 font-semibold ${activeTab === "projects" ? "bg-white text-gray-900" : "bg-gray-900/70 text-white hover:bg-gray-800"}`}
+          href="/admin?tab=projects"
+        >
+          Projects
+        </Link>
+        <Link
+          aria-current={activeTab === "skills" ? "page" : undefined}
+          className={`rounded px-4 py-2 font-semibold ${activeTab === "skills" ? "bg-white text-gray-900" : "bg-gray-900/70 text-white hover:bg-gray-800"}`}
+          href="/admin?tab=skills"
+        >
+          Skills
+        </Link>
+      </nav>
+
+      <h1 className="mb-8 text-3xl font-bold">
+        {activeTab === "skills" ? "Manage skills" : "Manage projects"}
+      </h1>
       {message && (
         <p
           className="mb-6 rounded border border-green-300 bg-green-50 p-3 text-green-900"
@@ -96,56 +150,100 @@ export default async function Page({ searchParams }: AdminPageProps) {
         </p>
       )}
 
-      <form
-        action={createProject}
-        className="mb-10 grid min-w-0 gap-4 rounded-lg border border-gray-300 bg-white/90 p-4 text-gray-900 shadow-sm sm:p-6"
-      >
-        <h2 className="text-xl font-semibold">Create project</h2>
-        <ProjectFields />
-        <button
-          className="w-fit rounded bg-gray-900 px-4 py-2 font-semibold text-white hover:bg-gray-700"
-          type="submit"
-        >
-          Create project
-        </button>
-      </form>
+      {activeTab === "skills" ? (
+        <>
+          <SkillForm />
 
-      <h2 className="mb-4 text-2xl font-semibold">
-        Projects ({projects.length})
-      </h2>
-      {projects.length === 0 ? (
-        <p>No projects yet. Create one using the form above.</p>
+          <h2 className="mb-4 text-2xl font-semibold">
+            Skills ({skills.length})
+          </h2>
+          {skills.length === 0 ? (
+            <p>No skills yet. Add one using the form above.</p>
+          ) : (
+            <ul className="grid gap-4">
+              {skills.map((skill) => (
+                <li
+                  key={skill.id}
+                  className="flex min-w-0 items-center justify-between gap-4 rounded-lg border border-gray-300 bg-white/90 p-4 text-gray-900 shadow-sm"
+                >
+                  <div className="min-w-0">
+                    <h3 className="break-words text-lg font-semibold">
+                      {skill.name}
+                    </h3>
+                    <p className="mt-1 text-sm text-gray-700">
+                      {skill.self_taught ? "Self-taught" : skill.url}
+                    </p>
+                  </div>
+                  <form action={deleteSkill}>
+                    <input name="id" type="hidden" value={skill.id} />
+                    <button
+                      className="rounded bg-red-900 px-4 py-2 font-semibold text-white hover:bg-red-700"
+                      type="submit"
+                    >
+                      Remove
+                    </button>
+                  </form>
+                </li>
+              ))}
+            </ul>
+          )}
+        </>
       ) : (
-        <ul className="grid gap-6">
-          {projects.map((project) => (
-            <li
-              key={project.id}
-              className="min-w-0 rounded-lg border border-gray-300 bg-white/90 p-4 text-gray-900 shadow-sm sm:p-6"
+        <>
+          <form
+            action={createProject}
+            className="mb-10 grid min-w-0 gap-4 rounded-lg border border-gray-300 bg-white/90 p-4 text-gray-900 shadow-sm sm:p-6"
+          >
+            <h2 className="text-xl font-semibold">Create project</h2>
+            <ProjectFields />
+            <button
+              className="w-fit rounded bg-gray-900 px-4 py-2 font-semibold text-white hover:bg-gray-700"
+              type="submit"
             >
-              <form action={updateProject} className="grid gap-4">
-                <input name="id" type="hidden" value={project.id} />
-                <h3 className="text-lg font-semibold">Edit: {project.title}</h3>
-                <ProjectFields project={project} />
-                <div className="flex flex-wrap gap-3">
-                  <button
-                    className="rounded bg-blue-800 px-4 py-2 font-semibold text-white hover:bg-blue-700"
-                    type="submit"
-                  >
-                    Save changes
-                  </button>
-                  <button
-                    className="rounded bg-red-900 px-4 py-2 font-semibold text-white hover:bg-red-600"
-                    formAction={deleteProject}
-                    formNoValidate
-                    type="submit"
-                  >
-                    Delete project
-                  </button>
-                </div>
-              </form>
-            </li>
-          ))}
-        </ul>
+              Create project
+            </button>
+          </form>
+
+          <h2 className="mb-4 text-2xl font-semibold">
+            Projects ({projects.length})
+          </h2>
+          {projects.length === 0 ? (
+            <p>No projects yet. Create one using the form above.</p>
+          ) : (
+            <ul className="grid gap-6">
+              {projects.map((project) => (
+                <li
+                  key={project.id}
+                  className="min-w-0 rounded-lg border border-gray-300 bg-white/90 p-4 text-gray-900 shadow-sm sm:p-6"
+                >
+                  <form action={updateProject} className="grid gap-4">
+                    <input name="id" type="hidden" value={project.id} />
+                    <h3 className="text-lg font-semibold">
+                      Edit: {project.title}
+                    </h3>
+                    <ProjectFields project={project} />
+                    <div className="flex flex-wrap gap-3">
+                      <button
+                        className="rounded bg-blue-800 px-4 py-2 font-semibold text-white hover:bg-blue-700"
+                        type="submit"
+                      >
+                        Save changes
+                      </button>
+                      <button
+                        className="rounded bg-red-900 px-4 py-2 font-semibold text-white hover:bg-red-600"
+                        formAction={deleteProject}
+                        formNoValidate
+                        type="submit"
+                      >
+                        Delete project
+                      </button>
+                    </div>
+                  </form>
+                </li>
+              ))}
+            </ul>
+          )}
+        </>
       )}
     </section>
   );

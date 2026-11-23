@@ -22,7 +22,9 @@ This site is my portfolio and also my capstone: a working full-stack app. It wil
 
 - **CV:** downloadable PDF
 
-- **Admin** (private): manage project entries through the authenticated admin page and Supabase
+- **Admin** (private): manage skills and project entries through the authenticated admin page and Supabase
+
+Apply the `20261123143000_create_skills.sql` migration in Supabase before using the skills page or its admin editor.
 
 ## Environment Variables
 

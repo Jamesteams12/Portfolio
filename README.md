@@ -40,7 +40,7 @@ My verified badges are on [Credly](https://www.credly.com/users/tj-fraser.fa11c5
 
 ## AI Usaged
  
-I used AI tools (Claude mainly) to: Plan how the website might or could look like, Brainstorm ideas when I don't have any idea how to effectively present a page or website and Explain error problems and how to fit it. I wrote and understand the code in this repo and can explain any part of it. Where AI helped, I reviewed and changed the result myself.
+I used AI tools (Claude and Copilot from VS-code) to: Plan how the website might or could look like, Brainstorm ideas when I don't have any idea how to effectively present a page or website and Explain error problems and how to fit it. I understand the code in this repo and can explain any part of it and how it works. Where AI helped in writing the code, I reviewed it to make sure it works as intended and changed the result myself into the style I want.
 
 ## Peer review
 

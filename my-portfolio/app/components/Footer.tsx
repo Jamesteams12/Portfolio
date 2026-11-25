@@ -4,9 +4,6 @@ export default async function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-400 p-6 text-center border-t border-gray-800">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-2 sm:flex-row sm:gap-4">
-        <span>
-          &copy; {new Date().getFullYear()} My Portfolio. All rights reserved.
-        </span>
         <a
           href="https://github.com/Jamesteams12"
           target="_blank"

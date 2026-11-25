@@ -20,8 +20,8 @@ export const metadata: Metadata = {
 
 const profile = {
   name: "TJ Fraser",
-  careerTitle: "Aspiring Software Developer",
-  biography: "",
+  careerTitle: "Software Developer",
+  biography: "A Junior Software Developer with skiills in HTML, CSS, JavaScript and Python. I have a passion for creating either websites or applications that are user-friendly and that anyone can use them. I am always looking for more ways to improve my skills and learn new methods to create better applications.",
   photoSrc: "",
 };
 

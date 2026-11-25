@@ -46,9 +46,6 @@ export default async function Page() {
   return (
     <section className="mx-auto w-full max-w-6xl px-4 py-8 text-white sm:px-6">
       <h1 className="text-center text-3xl font-bold">Skills</h1>
-      <p className="mx-auto mt-4 max-w-3xl text-center text-lg">
-        The skills I have developed and the evidence behind them.
-      </p>
       <hr className="mt-6 text-black" />
       {skills.length === 0 ? (
         <p className="mt-8 text-center">No skills to show yet.</p>

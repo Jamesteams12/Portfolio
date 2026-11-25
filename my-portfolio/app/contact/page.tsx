@@ -36,9 +36,6 @@ export default async function Page({ searchParams }: ContactPageProps) {
   return (
     <section className="mx-auto w-full max-w-xl px-4 py-12 sm:px-6 sm:py-16">
       <h1 className="mb-3 text-3xl font-bold text-white">Contact</h1>
-      <p className="mb-8 text-white">
-        Send me a message using the form below.
-      </p>
 
       {success === "1" && (
         <p className="mb-6 rounded bg-green-100 px-4 py-3 text-green-900" role="status">

@@ -55,9 +55,6 @@ export default async function Page() {
       <h1 className="text-center text-3xl font-bold">
         Projects
       </h1>
-      <p className="mx-auto mt-4 max-w-3xl text-center text-lg">
-        This is all the projects I have worked on. Use the link on each card to view a project.
-      </p>
       <hr className="mt-6 text-black" />
       {projects.length === 0 ? (
         <p className="mt-8 text-center">No projects to show yet.</p>

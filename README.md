@@ -24,7 +24,6 @@ This site is my portfolio and also my capstone: a working full-stack app. It wil
 
 - **Admin** (private): manage skills and project entries through the authenticated admin page and Supabase
 
-Apply the `20261123143000_create_skills.sql` migration in Supabase before using the skills page or its admin editor.
 
 ## Environment Variables
 
@@ -37,6 +36,12 @@ Apply the `20261123143000_create_skills.sql` migration in Supabase before using 
 ## Skills and credentials
  
 My verified badges are on [Credly](https://www.credly.com/users/tj-fraser.fa11c5cf/badges/credly). So I will link each skill to this to show evidence.
+
+## Setup (if you want to test it yourself)
+
+For a new Supabase database, run [`my-portfolio/supabase/setup.sql`](my-portfolio/supabase/setup.sql) once to create the full schema.
+
+Existing databases should continue using their pending timestamped migrations. Do not run the setup script on a database that already has these tables; it is a fresh-database bootstrap, while the migration files preserve deployment history.
 
 ## AI Usaged
  

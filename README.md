@@ -1,62 +1,68 @@
 # TJ Fraser | Developer Portfolio
- 
+
 A personal portfolio site built to show employers what I can do with React, Next.js, Tailwind and Supabase, and the kind of junior software developer role I'm looking for.
 
-## Live URL (Vercel)
+## Features
 
-Link: [my-portfolio-olive-three-76.vercel.app](https://my-portfolio-olive-three-76.vercel.app/about)
+- Responsive About, Projects, Skills, and Contact pages
+- Project and skill listings stored in Supabase
+- Contact form with server-side validation and spam/rate-limit protections
+- Password-protected admin dashboard for managing projects and skills
+- Downloadable CV
+- GitHub and LinkedIn profile links
+- SEO metadata, sitemap, and robots.txt
+
+## Technologies
+
+- Next.js and React
+- TypeScript
+- Tailwind CSS
+- Supabase
+- NextAuth.js
+- Vercel
+
+## Live Site
+
+[my-portfolio-olive-three-76.vercel.app](https://my-portfolio-olive-three-76.vercel.app)
+
 
 ## Walkthrough
 
-Link to video: https://www.youtube.com/watch?v=MCbuMbYMQ8I
+[Watch the portfolio walkthrough on YouTube](https://www.youtube.com/watch?v=MCbuMbYMQ8I)
 
-## About this project
- 
-This site is my portfolio and also my capstone: a working full-stack app. It will show who I am, what I've built, and the evidence behind my skills. Everything (design, words and code) is my own.
+## Installation and Setup
 
-## Planned pages
- 
-- **About:** who I am and the role I want
+Requirements: Node.js, npm, and a Supabase project.
 
-- **Projects:** capstone as a full case study (problem, my role, stack, screenshots, live and repo links, what's next)
+```powershell
+git clone https://github.com/Jamesteams12/Portfolio.git
+Set-Location Portfolio\my-portfolio
+Copy-Item .env.example .env.local
+npm install
+npm run dev
+```
 
-- **Skills:** each skill linked to evidence (projects, repos, certifications)
+Before starting the app, add the required values to `my-portfolio/.env.local` using the variable names below. Do not commit this file.
 
-- **Contact:** working form saved to Supabase, with spam protection
+For a new Supabase database, run [`supabase/setup.sql`](my-portfolio/supabase/setup.sql) once in the Supabase SQL editor. For an existing database, apply its pending timestamped files from [`supabase/migrations`](my-portfolio/supabase/migrations) instead; do not run the fresh-database setup script against tables that already exist.
 
-- **CV:** downloadable PDF
-
-- **Admin** (private): manage skills and project entries through the authenticated admin page and Supabase
-
+The development server is available at `http://localhost:3000`.
 
 ## Environment Variables
 
-- ADMIN_PASSWORD=
-- AUTH_SECRET=
-- NEXT_PUBLIC_SUPABASE_URL=
-- NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=
-- SUPABASE_SERVICE_ROLE_KEY=
+Set these names in `my-portfolio/.env.local`; do not put secret values in this README:
 
-## Skills and credentials
- 
-My verified badges are on [Credly](https://www.credly.com/users/tj-fraser.fa11c5cf/badges/credly). So I will link each skill to this to show evidence.
+- `ADMIN_PASSWORD`
+- `AUTH_SECRET`
+- `NEXT_PUBLIC_SITE_URL`
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
+- `SUPABASE_SERVICE_ROLE_KEY`
 
-## Setup (if you want to test it yourself)
+## AI Usage
 
-For a new Supabase database, run [`my-portfolio/supabase/setup.sql`](my-portfolio/supabase/setup.sql) once to create the full schema.
-
-Existing databases should continue using their pending timestamped migrations. Do not run the setup script on a database that already has these tables; it is a fresh-database bootstrap, while the migration files preserve deployment history.
-
-## AI Usaged
- 
 I used AI tools (Claude and Copilot from VS-code) to: Plan how the website might or could look like, Brainstorm ideas when I don't have any idea how to effectively present a page or website and Explain error problems and how to fit it. I understand the code in this repo and can explain any part of it and how it works. Where AI helped in writing the code, I reviewed it to make sure it works as intended and changed the result myself into the style I want.
 
-## Peer review
+## Skills and Credentials
 
-What the reviewer said: "The wireframes show a good structure, but the Projects page could benefit from project cards that display screenshots, technologies used, and links to GitHub repositories."
-
-Reflection from the review: The feedback highlighted the importance of showcasing projects in a more visual way. I will plan to change the method for Project page to a project cards method containing screenshots, technology stacks, and repository links to make my work easier to evaluate.
-
-## Reflection for Week 36
-
-I improved the portfolio's discoverability by implementing SEO metadata, Open Graph sharing tags, a sitemap, and a robots.txt file. I optimized the site using Lighthouse and achieved scores above 90 for both SEO and accessibility. I also added links to my LinkedIn and GitHub profiles and tested all external links to ensure they function correctly.
+My verified badges are available on [Credly](https://www.credly.com/users/tj-fraser.fa11c5cf/badges/credly).

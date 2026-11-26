@@ -6,6 +6,10 @@ A personal portfolio site built to show employers what I can do with React, Next
 
 Link: [my-portfolio-olive-three-76.vercel.app](https://my-portfolio-olive-three-76.vercel.app/about)
 
+## Walkthrough
+
+Link to video: https://www.youtube.com/watch?v=MCbuMbYMQ8I
+
 ## About this project
  
 This site is my portfolio and also my capstone: a working full-stack app. It will show who I am, what I've built, and the evidence behind my skills. Everything (design, words and code) is my own.
